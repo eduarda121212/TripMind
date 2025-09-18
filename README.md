@@ -1,5 +1,5 @@
-  <h1>🌍 Portal de Viagens Inteligente</h1>
-  <p>O <strong>Portal de Viagens Inteligente</strong> é uma aplicação web que oferece aos usuários uma experiência completa de planejamento de viagens, integrando informações em tempo real sobre clima, câmbio e atrações turísticas.</p>
+  <h1>🌍 TripMind</h1>
+  <p>O <strong>TripMind</strong> é uma aplicação web que oferece aos usuários uma experiência completa de planejamento de viagens, integrando informações em tempo real sobre clima, câmbio e atrações turísticas.</p>
 
   <h2>📌 Escopo</h2>
   <ul>

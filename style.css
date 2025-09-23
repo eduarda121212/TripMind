@@ -134,4 +134,14 @@ main {
     line-height: 1.6;
 }
 
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
 
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+}

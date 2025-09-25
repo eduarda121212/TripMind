@@ -22,54 +22,33 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Lista de destinos
-const destinations = [
-  'Paris', 'Madri', 'Tóquio', 'Roma', 'Milão', 'Nova York',
-  'Los Angeles', 'Amsterdã', 'Sydney', 'Singapura',
-  'Barcelona', 'Rio de Janeiro', 'São Paulo'
-];
-
+// --- Filtro de pesquisa direto nos cards ---
 const searchInput = document.getElementById('searchInput');
-const searchResults = document.getElementById('searchResults');
+const exploreBtn = document.getElementById('exploreBtn'); // botão "Explorar"
+const cards = document.querySelectorAll('.card');
 
-function normalizeText(text) {
-  return text.toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '');
+function filterCards() {
+  const searchValue = searchInput.value.toLowerCase();
+
+  cards.forEach(card => {
+    const cardTitle = card.querySelector("h3").textContent.toLowerCase();
+    const cardLocation = card.querySelector(".location").textContent.toLowerCase();
+
+    if (cardTitle.includes(searchValue) || cardLocation.includes(searchValue)) {
+      card.style.display = "block"; // mostra
+    } else {
+      card.style.display = "none"; // esconde
+    }
+  });
 }
 
-// Mostrar sugestões
-searchInput.addEventListener('input', function() {
-  const query = this.value.trim();
-  
-  if (query.length === 0) {
-      searchResults.style.display = 'none';
-      return;
-  }
-  
-  const normalizedQuery = normalizeText(query);
-  const matches = destinations.filter(dest => 
-      normalizeText(dest).includes(normalizedQuery)
-  );
-  
-  if (matches.length > 0) {
-      displaySearchResults(matches);
-      searchResults.style.display = 'block';
-  } else {
-      searchResults.style.display = 'none';
-  }
-});
+// Filtro em tempo real
+searchInput.addEventListener('input', filterCards);
 
-function displaySearchResults(matches) {
-  searchResults.innerHTML = matches.map(match => 
-      `<div class="search-result" onclick="selectDestination('${match}')">${match}</div>`
-  ).join('');
-}
-
-function performSearch() {
-  const query = searchInput.value.trim();
-  if (query) {
-      console.log('Pesquisando por:', query);
-      searchResults.style.display = 'none';
-  }
+// Filtro ao clicar no botão "Explorar"
+if (exploreBtn) {
+  exploreBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    filterCards();
+  });
 }

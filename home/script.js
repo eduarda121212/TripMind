@@ -222,7 +222,7 @@ function openDestinationDetails(destinationName) {
     .replace(/\s+/g, '-')
     .normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // remove acentos
   
-  window.open(`destino-detalhes.html?destino=${urlName}`, '_blank');
+  window.location.href = `destino-detalhes.html?destino=${urlName}`;
 }
 
 // Pegar destino da URL
@@ -303,3 +303,4 @@ mapa.innerHTML = `
     loading="lazy">
   </iframe>
 `;
+

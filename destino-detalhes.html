@@ -1,14 +1,50 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Págin destino</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Destino</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <h1 id="destino"></h1>
-    <button onclick="mostrar()">Mostrar</button>
-</body>
+  <div class="container">
+    
+    <!-- Conteúdo principal -->
+    <div class="conteudo">
+      
+      <!-- O que fazer -->
+      <section class="card-detalhe">
+        <h2><i class="fa-solid fa-camera"></i> O que fazer por aqui?</h2>
+        <div class="lista-atracoes" id="atracoes">
+          <!-- Gerado pelo JS -->
+        </div>
+      </section>
+      
+    </div>
 
-    <script src="destinos/script.js"></script>
+    <!-- Lateral direita -->
+    <aside class="sidebar">
+
+      <!-- Hotéis -->
+      <section class="card-detalhe">
+        <h2><i class="fa-solid fa-hotel"></i> Hotéis</h2>
+        <ul id="hoteis">
+          <!-- Gerado pelo JS -->
+        </ul>
+      </section>
+
+      <!-- Localização -->
+      <section class="card-detalhe">
+        <h2><i class="fa-solid fa-location-dot"></i> Localização</h2>
+        <div class="mapa">
+          <p id="localizacao">Mapa Interativo</p>
+        </div>
+      </section>
+
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>

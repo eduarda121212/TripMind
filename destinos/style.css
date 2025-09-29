@@ -1,0 +1,123 @@
+body {
+  background: #f4f6f9;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Coluna esquerda */
+.conteudo {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Coluna direita */
+.sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Cards */
+.card-detalhe {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.card-detalhe h2 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #34495e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Lista de atrações */
+.lista-atracoes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.lista-atracoes div {
+  padding: 12px;
+  background: #fafafa;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.lista-atracoes div:hover {
+  background: #eef6ff;
+  transform: translateX(4px);
+}
+
+/* Hotéis */
+#hoteis {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#hoteis li {
+  background: #fafafa;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#hoteis li:hover {
+  background: #eef6ff;
+  transform: translateX(3px);
+}
+
+/* Mapa */
+.mapa {
+  height: 200px;
+  background: #f1f3f6;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.detalhes-container {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card-detalhe {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+#mapa {
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+}

@@ -230,7 +230,7 @@ function openDestinationDetails(destinationName) {
     const destinoURL = params.get("destino");
 
     // Procurar no array locais
-    const destino = locais.find(loc => 
+    constdestino = locais.find(loc => 
       loc.nome.toLowerCase().replace(/\s+/g, '-')
       .normalize('NFD').replace(/[\u0300-\u036f]/g, '') === destinoURL
     );
@@ -251,3 +251,55 @@ function openDestinationDetails(destinationName) {
     } else {
       document.getElementById("detalhes").innerHTML = `<p>Destino não encontrado.</p>`;
     }
+
+    // pega o destino da URL (?destino=Tokyo)
+const urlParams = new URLSearchParams(window.location.search);
+const destino = urlParams.get("destino");
+document.getElementById("tituloDestino").textContent = destino;
+
+// ========== CLIMA ==========
+const climaBox = document.getElementById("clima");
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${destino}&units=metric&lang=pt_br&appid=SUA_CHAVE_AQUI`)
+  .then(res => res.json())
+  .then(data => {
+    if (data.main) {
+      climaBox.textContent = `${data.weather[0].description}, ${data.main.temp}°C`;
+    } else {
+      climaBox.textContent = "Clima não encontrado.";
+    }
+  })
+  .catch(() => climaBox.textContent = "Erro ao carregar clima.");
+
+// ========== CÂMBIO ==========
+const cambioBox = document.getElementById("cambio");
+// exemplo: se a cidade for Tóquio → JPY
+let moeda = "JPY"; 
+if (destino === "Paris") moeda = "EUR";
+if (destino === "Nova York") moeda = "USD";
+if (destino === "Londres") moeda = "GBP";
+if (destino === "São Paulo") moeda = "BRL";
+
+fetch(`https://economia.awesomeapi.com.br/json/last/USD-${moeda}`)
+  .then(res => res.json())
+  .then(data => {
+    const chave = `USD${moeda}`;
+    if (data[chave]) {
+      cambioBox.textContent = `1 USD = ${parseFloat(data[chave].bid).toFixed(2)} ${moeda}`;
+    } else {
+      cambioBox.textContent = "Câmbio não encontrado.";
+    }
+  })
+  .catch(() => cambioBox.textContent = "Erro ao carregar câmbio.");
+
+// ========== MAPA ==========
+const mapa = document.getElementById("mapa");
+mapa.innerHTML = `
+  <iframe
+    src="https://www.google.com/maps?q=${destino}&output=embed"
+    width="100%"
+    height="300"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy">
+  </iframe>
+`;

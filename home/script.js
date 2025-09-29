@@ -12,12 +12,15 @@ document.querySelectorAll('.card').forEach(card => {
 // Rolagem suave para os links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth'
-      });
+    const href = this.getAttribute('href');
+    if (href && href !== '#') {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
     }
   });
 });
@@ -91,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Funcionalidade de favoritos
+  // ===== FUNCIONALIDADE DE FAVORITOS =====
   const favoriteBtns = document.querySelectorAll('.favorite');
   
   favoriteBtns.forEach(btn => {
@@ -100,13 +103,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const destName = card.querySelector('h3').textContent;
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
     
+    // Se já está nos favoritos, mostrar coração preenchido
     if (favorites.includes(destName)) {
       btn.innerHTML = '<i class="fa-solid fa-heart"></i>';
       btn.style.color = '#e74c3c';
     }
     
+    // Click no botão de favorito
     btn.addEventListener('click', function(e) {
-      e.stopPropagation();
+      e.stopPropagation(); // Impede que o click abra a página de detalhes
       
       const card = this.closest('.card');
       const destName = card.querySelector('h3').textContent;
@@ -117,13 +122,26 @@ document.addEventListener('DOMContentLoaded', function() {
         favorites = favorites.filter(f => f !== destName);
         this.innerHTML = '<i class="fa-regular fa-heart"></i>';
         this.style.color = '';
+        
+        // Feedback visual
+        this.style.transform = 'scale(0.8)';
+        setTimeout(() => {
+          this.style.transform = 'scale(1)';
+        }, 200);
       } else {
         // Adicionar aos favoritos
         favorites.push(destName);
         this.innerHTML = '<i class="fa-solid fa-heart"></i>';
         this.style.color = '#e74c3c';
+        
+        // Animação de "curtir"
+        this.style.transform = 'scale(1.3)';
+        setTimeout(() => {
+          this.style.transform = 'scale(1)';
+        }, 200);
       }
       
+      // Salvar no localStorage
       localStorage.setItem('favorites', JSON.stringify(favorites));
     });
   });

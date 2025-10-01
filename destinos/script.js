@@ -383,7 +383,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('localizacao').innerHTML = mapaHTML;
   
   // Carregar clima
-  const climaSection = document.querySelector('.card-detalhe:nth-child(2) .lista-atracoes');
+  const climaSection = document.querySelector(' .lista-temperatura');
   const climaHTML = await carregarClima(destino.lat, destino.lon, destino.nome);
   climaSection.innerHTML = climaHTML;
   

@@ -49,4 +49,7 @@
     <li><strong>Google Places API</strong> ou <strong>TripAdvisor API</strong> — atrações turísticas, restaurantes e hotéis</li>
   </ul>
 
-  
+  <h2>💻 Prototipo do figma </h2>
+  <ul>
+    <li><strong>https://www.figma.com/make/C50eZlyz2UM0tMvxHpKFDU/Intelligent-Travel-Portal-Wireframe?node-id=0-1&t=P4MRu58YSJO0VCW8-1</li>
+  </ul>

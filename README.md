@@ -46,7 +46,6 @@
   <ul>
     <li><strong>OpenWeather API</strong> — previsão do tempo</li>
     <li><strong>ExchangeRate API</strong> — conversão de moedas</li>
-    <li><strong>Google Places API</strong> ou <strong>TripAdvisor API</strong> — atrações turísticas, restaurantes e hotéis</li>
   </ul>
 
   <h2>💻 Prototipo do figma </h2>
